@@ -1,0 +1,11 @@
++ install package:
+    npm install react-bootstrap-icons --save
++ thư viện ảnh
+    https://react-icons.github.io/react-icons/icons/bs/
+
++ export svg image to component
+    https://svg2jsx.com/
+
++ npm instal gsap     
+
++ npm install framer-motion
