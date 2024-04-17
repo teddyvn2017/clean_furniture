@@ -1,26 +1,44 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
-import HomePage from './pages/HomePage'
-// import Navbar from './components/Navbar'
-// import Nav from './components/Nav'
-// import Craft from './components/Craft'
-// import Why from './components/Why'
-// import Help from './components/Help'
-// import Three from './components/Three'
-// import Testimonial from './components/Testimonial'
-// import Recent from './components/Recent'
-// import Footer from './components/Footer'
-function App() {
-  // const [count, setCount] = useState(0)
+//import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 
-  return (
+import LoginPage from './pages/LoginPage';
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage';
+import AboutUsPage from './pages/AboutUsPage';
+import BlogPage from './pages/BlogPage';
+import ServicesPage from './pages/ServicesPage';
+import ContactUsPage from './pages/ContactUsPage';
+import RegisterPage from './pages/RegisterPage';
+import NavOnly from './components/NavOnly';
+
+function App() {
+  
+  let component
+
+  switch(window.location.pathname){
+    case '/':
+    case '/home': component = <HomePage />; 
+                  break;
+    case '/about-us': component = <AboutUsPage />; break;
+    case '/blog': component= <BlogPage />; break;
+    case '/services': component= <ServicesPage/>; break;
+    case '/contact-us': component= <ContactUsPage/>; break;
+    case '/dang-nhap': component= <LoginPage/>; break;
+    case '/dang-ky': component= <RegisterPage/>; break;
+    
+  }
+
+  //console.log('component', component)
+  	return (
    
-      <>
-        <HomePage />
-      </>
-   
-  )
+		<>        
+			{
+			window.location.pathname === '/' || window.location.pathname === '/home' ? (
+			<>{component}</>) : (<><NavOnly />{component}<Footer /> </>)
+			}                    
+		</>
+  	)
 }
 
 export default App
